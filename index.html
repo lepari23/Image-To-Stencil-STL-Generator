@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Image-to-Stencil Generator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.164.0/build/three.module.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <header><h1>Image-to-Stencil Generator</h1></header>
+
+    <main class="layout">
+      <!-- Viewer LEFT -->
+      <div class="viewer-box"><canvas id="viewer"></canvas></div>
+
+      <!-- Controls RIGHT -->
+      <aside class="controls">
+        <label class="control-block"
+          >Upload Image
+          <input type="file" id="upload" accept="image/*" />
+        </label>
+
+        <label class="control-block"
+          >Contrast
+          <input
+            id="contrast"
+            type="range"
+            min="0"
+            max="200"
+            step="1"
+            value="100"
+          />
+        </label>
+
+        <label class="control-block"
+          >Threshold
+          <input
+            id="threshold"
+            type="range"
+            min="0"
+            max="255"
+            step="1"
+            value="128"
+          />
+        </label>
+
+        <label class="control-block"
+          >Units
+          <select id="units">
+            <option value="mm">mm</option>
+            <option value="cm">cm</option>
+            <option value="in">in</option>
+          </select>
+        </label>
+
+        <label class="control-block"
+          >Target width
+          <input id="plate-width" type="number" min="10" step="1" value="60" />
+        </label>
+
+        <label class="control-block"
+          >Extrusion depth
+          <input id="depth" type="number" min="1" step="0.5" value="2" />
+        </label>
+
+        <label class="control-block">
+            Pixel size (mm per pixel)
+        <input id="pixel-size" type="number" min="0.2" step="0.1" value="1">
+        </label>
+
+
+        <label class="control-block">
+          <input type="checkbox" id="add-frame" /> Add solid base (stamp mode)
+        </label>
+
+        <label class="control-block">
+          <input type="checkbox" id="invert" /> Invert stencil (cutout style)
+        </label>
+
+        <label class="control-block">
+          <input type="checkbox" id="h-bridge" /> Horizontal bridges
+        </label>
+
+        <label class="control-block">
+          Bridge spacing
+          <input id="h-spacing" type="number" min="1" step="1" value="5" />
+        </label>
+
+        <label class="control-block">
+          <input type="checkbox" id="v-bridge" /> Vertical bridges
+        </label>
+
+        <label class="control-block">
+          Bridge spacing
+          <input id="v-spacing" type="number" min="1" step="1" value="5" />
+        </label>
+
+        <button id="download">Download STL</button>
+
+        <small id="size-label">Size: –</small>
+      </aside>
+    </main>
+
+    <script type="module" src="index.js"></script>
+  </body>
+</html>
